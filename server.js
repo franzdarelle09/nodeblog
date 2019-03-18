@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const app = express();
 mongoose.connect("mongodb://localhost:27017/blog", { useNewUrlParser: true });
@@ -9,6 +10,7 @@ mongoose.connection.on("connected", err => {
 });
 
 //middleware
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
